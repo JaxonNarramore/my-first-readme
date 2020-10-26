@@ -1,7 +1,10 @@
-# My First README
+# Tic-Tac-Toe
 
-Repo explaining README.md
+## Description
+This is a game of the infamous Tic-Tac-Toe. One player is X, the other one is O and the goal of the game is to get three of your letter in a row. A player can either win by getting three in a row vertically, horizontally, or diagonally. If neither player achives three in a row then it is a tie. If someone has won the game then the page will let you know who won. Once the game has been played you must refresh the page to start a new game.
 
+![Tic-Tac-Toe Game](TTT.png)
+[Tic-Tac-Toe Game Board]
 
 ## Steps to install on local computer
 1. Go to [repo](https://github.com/SEI-ATL/tic-tac-toe) on Github profile
@@ -16,46 +19,57 @@ git clone https://github.com/SEI-ATL/tic-tac-toe
 open index.html
 ```
 
-
+## Explanation of key code
 
 ```javascript 
-const handleWin = (letter) => {
-  gameIsLive = false;
-  if (letter === "x") {
-    statusDiv.innerHTML = `${letterToSymbol(letter)} has won!`;
-  } else {
-    statusDiv.innerHTML = `<span>${letterToSymbol(letter)} has won!</span>`;
-  }
-};
+// A function that makes an array for the boxes and switches between the players
+   function clickResult(e) {
+        const boxArray = Array.from(boxes)
+        const index = boxArray.indexOf(e.target)
+        displayPlayer.innerHTML = currentPlayer
+
+        if (currentPlayer === 'PlayerO') {
+            boxes[index].classList.add('PlayerX')
+            boxes[index].innerText = currentPlayer
+            currentPlayer = 'PlayerX'
+        } else {
+            boxes[index].classList.add('PlayerO')
+            boxes[index].innerText = currentPlayer
+            currentPlayer = 'PlayerO'
+        }
 ```
 
 ```css
-.grid {
-    background-color: salmon;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 50px;
+/* This is the styling of the Tic-Tac-Toe board */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 500px;
+  height: 500px;
 }
+.cell {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  color: white;
 ```
 
 ```html
-<div class="grid">
-    <div class="box" id="box-1"></div>
-    <div class="box" id="box-2"></div>
-    <div class="box" id="box-3"></div>
-    <div class="box" id="box-4"></div>
-    <div class="box" id="box-5"></div>
-    <div class="box" id="box-6"></div>
-    <div class="box" id="box-7"></div>
-    <div class="box" id="box-8"></div>
-    <div class="box" id="box-9"></div>
+<!-- This is the Tic-Tac-Toe board setup -->
+<h1>Tic-Tac-Toe</h1>
+  <h2 id="player">PlayerO</h2>
+    <div class="container">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
     </div>
-
 ```
 
-| functions | Description |
-| ----------- | ----------- |
-| `handlewin()` | Handle the win of either player |
-| `checkGameStatus()` | Checks the status after each turn |
+## Support
+If you have any questions, comments, or concerns my email is jaxon_narramore@hotmail.com
